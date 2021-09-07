@@ -9,3 +9,15 @@ export const edit = (req, res) => {
 export const remove = (req, res) => {
   return res.send("Delete");
 };
+
+export const login = (req, res) => {
+  return res.send("login");
+};
+
+export const logout = (req, res) => {
+  return res.send("logout");
+};
+
+export const see = (req, res) => {
+  return res.send("see");
+};
