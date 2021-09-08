@@ -1,7 +1,7 @@
-doctype html
-html(lang="ko")
-    head
-        title Document
-    body 
-        h1 Welcome to webtube 
-        footer &copy; 2021 Wetube
+extends base.pug
+include mixins/video
+
+block content
+    h2 Welcome here you will see the trending videos 
+    each video in videos
+        +video(video)
