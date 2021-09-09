@@ -1,8 +1,3 @@
-const fakeUser = {
-  username: "Nico",
-  loggedIn: true,
-};
-
 let videos = [
   {
     title: "First Video",
@@ -34,37 +29,34 @@ export const trending = (req, res) => {
   return res.render("home", {
     pageTitle: "Home",
     videos: videos,
-    fakeUser: fakeUser,
   });
 };
 
-export const see = (req, res) => {
-  console.log(req.params);
-  return res.render("watch", {
-    pageTitle: "Home",
-    videos: videos,
-    fakeUser: fakeUser,
-  });
+export const watch = (req, res) => {
+  const { id } = req.params;
+  const video = videos[id - 1];
+  return res.render("watch", { pageTitle: `Watching ${video.title}`, video });
 };
 
-export const edit = (req, res) => {
-  console.log(req.params);
-  return res.render("edit", {
-    pageTitle: "Home",
-    videos: videos,
-    fakeUser: fakeUser,
-  });
+export const getEdit = (req, res) => {
+  const { id } = req.params;
+  const video = videos[id - 1];
+  return res.render("edit", { pageTitle: `Editing: ${video.title}`, video });
 };
 
-export const search = (req, res) => {
-  return res.send("search");
+export const postEdit = (req, res) => {
+  return res.redirect();
 };
 
-export const deleteVideo = (req, res) => {
-  console.log(req.params);
-  return res.send("delete");
-};
+// export const search = (req, res) => {
+//   return res.send("search");
+// };
 
-export const upload = (req, res) => {
-  return res.send("upload");
-};
+// export const deleteVideo = (req, res) => {
+//   console.log(req.params);
+//   return res.send("delete");
+// };
+
+// export const upload = (req, res) => {
+//   return res.send("upload");
+// };
